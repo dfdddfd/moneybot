@@ -5,7 +5,9 @@ class Command:
     async def run(self, client, message, ext):
         client.db[str(message.author.id)] = {
             'money': 0,
-            'recent_win': 0,
-            'roles': []
+            'roles': [],
+            'stock': {
+                
+            }
         }
         await message.channel.send('완료했습니다')

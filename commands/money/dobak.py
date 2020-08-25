@@ -7,7 +7,7 @@ class Command:
     async def run(self, client, message, ext):
         money = client.get_int_msg(message, ext)
         if not money: return 
-        if money > client.db[str(message.author.id)]['money']: return await message.channel.send('너무 말한 돈이 큽니다')
+        if money > client.db[str(message.author.id)]['money']: return await message.channel.send('부족')
         res = percent(50)
         if res: client.db[str(message.author.id)]['money'] += money
         else: client.db[str(message.author.id)]['money'] -= money

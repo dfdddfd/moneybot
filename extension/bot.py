@@ -1,13 +1,19 @@
 from chdp import CHDPClient
 from chdp.chdp_funcs import use_func, dir_object, get_time
 from dbjson import Database
+from extension.주식manager import Manager
+
+from discord import (
+    Message
+)
 
 class Extension: pass
 
 class MoneyBot(CHDPClient): 
-    db = Database('database/user.json')
+    db = Database('database/유저.json')
+    stock = Manager()
 
-    async def use_cmd(self, message) -> bool:
+    async def use_cmd(self, message: Message) -> bool:
         if not message.content.startswith(self.prefix): return
         if message.author.bot: return
         if message.author.id in self.blacklist: return

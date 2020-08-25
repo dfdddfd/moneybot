@@ -7,6 +7,7 @@ class Command:
 
     async def run(self, client, message, ext):
         user = ext.first_member
+        if str(user.id) not in client.db: return
         money = client.get_int_msg(message, ext)
         if not money: return 
         client.db[str(user.id)]['money'] = money
